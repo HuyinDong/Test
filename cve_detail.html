@@ -107,15 +107,11 @@
 				</tr>
 			  </thead>
 			  <tbody>
-				<?php
-				while($vendor_row = mysql_fetch_array($vendor_results))
-				{
-			    ?>
-				<tr>
-				  <td> <?=$vendor_row["vendor_name"]?>    </td>
-				  <td> <?=$vendor_row["prod_name"]?>    </td>
-				  <td> <?=$vendor_row["vers_num"]?>    </td>
-				  <td> <?=$vendor_row["edition"]?>    </td>
+				<tr ng-repeat = "vendor in vendors">
+				  <td> {{vendor.vendor_id}}    </td>
+				  <td> {{vendor.prod_name}}   </td>
+				  <td> {{vendor.vers_num}}    </td>
+				  <td> {{vendor.edition}}   </td>
 				</tr>
 
 			  </tbody>
