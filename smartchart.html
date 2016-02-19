@@ -153,8 +153,25 @@ stroke-width: 1.5px;
        </aside>
          <div class="content-wrapper" >
         <!-- Main content -->
+
+        <section class="content-header">
+           <div>
+
+             <ul class="breadcrumb">
+				<li>
+					<i class="fa fa-home"></i>
+					<a href="#">Home</a>
+				</li>
+				<li>
+	         <i class="fa fa-random"></i>
+           <a href="smartchart.html">Smart Chart</a></li>
+			</ul>
+         </div>
+
+
+         </section>
         <section class="content" >
-        
+
 					<div class="box box-success" ng-app = 'myTreeChart' ng-controller = 'myTreeChartCtrl'>
 	                <div class="box-header with-border">
 	                  <h3 class="box-title">Select Options : </h3>
@@ -183,7 +200,7 @@ stroke-width: 1.5px;
 									</datalist>
 	                    </div>
 											<div class="col-xs-3">
-												<button class="btn blue" name='stype' ng-click = "getExploits()" value='exploits'><i class="fa fa-search"></i>
+												<button class="btn bg-purple" name='stype' ng-click = "getExploits()" value='exploits'><i class="fa fa-search"></i>
       GET EXPLOITS</button>
 	                    </div>
 	                  </div>
