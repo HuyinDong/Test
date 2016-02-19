@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Smart Exploits</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet" type="text/css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/style-responsive.css">
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/style.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
+    <link rel="stylesheet" href="dist/css/skins/skin-purple.css">
+    <link rel="stylesheet" href="dist/css/skins/skin-black-light.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+
+.node circle {
+cursor: pointer;
+fill: #fff;
+stroke: steelblue;
+stroke-width: 1.5px;
+}
+
+.node text {
+font-size: 11px;
+}
+
+path.link {
+fill: none;
+stroke: #ccc;
+stroke-width: 1.5px;
+}
+
+</style>
+    </style>
+  </head>
+  <!--
+  BODY TAG OPTIONS:
+  =================
+  Apply one or more of the following classes to get the
+  desired effect
+  |---------------------------------------------------------|
+  | SKINS         | skin-blue                               |
+  |               | skin-black                              |
+  |               | skin-purple                             |
+  |               | skin-yellow                             |
+  |               | skin-red                                |
+  |               | skin-green                              |
+  |---------------------------------------------------------|
+  |LAYOUT OPTIONS | fixed                                   |
+  |               | layout-boxed                            |
+  |               | layout-top-nav                          |
+  |               | sidebar-collapse                        |
+  |               | sidebar-mini                            |
+  |---------------------------------------------------------|
+  -->
+  <body class="hold-transition skin-purple">
+    <div class="wrapper">
+
+      <!-- Main Header -->
+      <header class="main-header">
+
+        <!-- Logo -->
+        <a href="#" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>S</b></span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="brand">Smart Exploits</span>
+        </a>
+
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+
+          <!-- Navbar Right Menu -->
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <!-- Messages: style can be found in dropdown.less-->
+              <li>
+                <!-- Menu toggle button -->
+                <a href="#">
+                  <i class="fa fa-envelope-o"></i>
+                  Contact
+                </a>
+              </li><!-- /.messages-menu -->
+
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar ">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu">
+            <!-- Optionally, you can add icons to the links -->
+
+            <li class = "active"><a href="index.html"><i class="fa fa-tachometer"></i>Dashboard</span></a></li>
+          <li><a href="cve.html"><i class="fa fa-bug"></i> CVEs </span>  <span class="label bg-orange pull-right">33</span></a></li>
+
+            <li class="treeview">
+              <a class="dropmenu" href="#"><i class="fa fa-sitemap"></i>  <span class="hidden-tablet"> Exploits </span>  <i class="fa fa-angle-left pull-right"></i> </a>
+              <ul class="treeview-menu" >
+                <li> <a href="exploit.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> Exploits </span>   <span class="label bg-purple pull-right"> 16023</span> </a></li>
+								<li><a href="metasploit.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> Metasploits </span>  <span class="label bg-green pull-right"> 3119 </span> </a></li>
+								<li><a href="int.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> INT Exploits </span>  <span class="label bg-blue pull-right"> 21692 </span> </a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a class="dropmenu" href="#"><i class="fa fa-sitemap"></i>  <span class="hidden-tablet"> Vulnerabilities </span>  <i class="fa fa-angle-left pull-right"></i> </a>
+              <ul class="treeview-menu" >
+                <li> <a href="sef.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> SEF </span>   <span class="label bg-navy pull-right"> 8976 </span> </a></li>
+                <li><a href="cnvd.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> CNVD </span>  <span class="label bg-maroon pull-right"> 3119 </span> </a></li>
+              </ul>
+            </li>
+              <li><a href="vendors.html"><i class="fa fa-list"></i> Vendors </span>  <span class="label bg-light-blue pull-right">33</span></a></li>
+                <li><a href="references.html"><i class="fa fa-info-circle"></i> References </span>  <span class="label bg-red pull-right">33</span></a></li>
+            <li class="treeview">
+              <a class="dropmenu" href="#"><i class="fa fa-sitemap"></i>  <span class="hidden-tablet"> Smart Exploits </span>  <i class="fa fa-angle-left pull-right"></i> </a>
+              <ul class="treeview-menu" >
+                <li> <a href="smarttable.html"><i class="fa fa-table"></i> <span class="hidden-tablet"> Smart Table </span> </a></li>
+                <li><a href="smartchart.html"><i class="fa fa-random"></i> <span class="hidden-tablet"> Smart Chart  </span> </a></li>
+              </ul>
+            </li>
+          </ul><!-- /.sidebar-menu -->
+
+
+         </section>
+
+        <!-- Main content -->
+        <section class="content" >
+
+					<div class="box box-success" ng-app = 'myTreeChart' ng-controller = 'myTreeChartCtrl'>
+	                <div class="box-header with-border">
+	                  <h3 class="box-title">Select Options : </h3>
+	                </div>
+									 <div class="form-group">
+	                <div class="box-body">
+	                  <div class="row">
+	                    <div class="col-xs-3">
+												<input type="text"  class="form-control" id="vendor" name="vendor" placeholder="Vender Name" list="vendorList" ng-model = "ven.selectedVendor">
+ 									<datalist id="vendorList">
+   									<option ng-repeat="v in ven.vendors" value="{{v}}">
+ 									</datalist>
+	                    </div>
+	                    <div class="col-xs-3">
+												<select id="product" name = "product" placeholder = "Product Name" class="form-control">
+	                  <option disabled selected> -- Select Product Name -- </option>
+										<option ng-repeat="product in ven.products" value="{{product}}">
+																									 {{product}}
+										</option>
+									</select>
+	                    </div>
+	                    <div class="col-xs-3">
+												<input type="text" class="form-control" id="version" name="version" placeholder="Version Number(Optional)" list="versionList">
+									<datalist id="versionList">
+										<option ng-repeat="v in ven.versions" value="{{v}}">
+									</datalist>
+	                    </div>
+											<div class="col-xs-3">
+												<button class="btn blue" name='stype' ng-click = "getExploits()" value='exploits'><i class="fa fa-search"></i>
+      GET EXPLOITS</button>
+	                    </div>
+	                  </div>
+	                </div><!-- /.box-body -->
+								</div>
+	              </div><!-- /.box -->
+								<div id = "treeChart"></div>
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+      <footer class="main-footer skin-purple">
+        <!-- To the right -->
+        <div class="pull-right">
+          Smart Exploits
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2016 <a href="#">Smart Exploits</a>.</strong> All rights reserved.
+      </footer>
+
+      <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+    </div><!-- ./wrapper -->
+
+    <!-- REQUIRED JS SCRIPTS -->
+
+    <!-- jQuery 2.1.4 -->
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <!-- Bootstrap 3.3.5 -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/app.min.js"></script>
+		<script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		<script src = "js/angular/angular.min.js"></script>
+		<script src = "js/lodash/lodash.min.js"></script>
+		<script>
+
+	var myTreeChart = angular.module('myTreeChart',[]);
+	myTreeChart.controller('myTreeChartCtrl',function($scope,$http){
+		$scope.ven = {};
+		$scope.ven.vendors = [];
+		$scope.ven.selectedVendor = '';
+		$scope.ven.versions = [];
+		$scope.ven.products = [];
+		/*
+				vendor input
+		*/
+
+		$(document).on('keyup', '#vendor', getVendorInfo);
+		console.log("a");
+		var excuted = false;
+		function getVendorInfo() {
+			if($('#vendor').val().length > 2 && !excuted){
+				$http.get("ajax/tableAndChart/getVendorInfo.php?vendor="+$('#vendor').val()).then(function(data){
+					$scope.ven.vendors = data.data;
+				});
+				excuted = true;
+			}else if($('#vendor').val().length < 2){
+					console.log("Not run");
+					excuted  = false;
+			}
+	}
+
+	/*
+			Product select
+	*/
+
+	$(document).on('change', '#vendor', getVulnInfo);
+
+	function getVulnInfo() {
+			if( $scope.ven.products != ''){
+					$scope.ven.products = '';
+			}
+			if( $scope.ven.filter != ''){
+					$scope.ven.filter = '';
+			}
+			$http.get("ajax/tableAndChart/getProductInfo.php?vendor=" + $scope.ven.selectedVendor).then(function (data) {
+					console.log(data);
+					$scope.ven.products = data.data;
+			});
+	};
+
+	/*
+			Version input
+	*/
+	$(document).on('focus', '#version', getVersionNum);
+
+	function getVersionNum(){
+		$http.get('ajax/tableAndChart/getVersionInfo.php?vendor='
+							+ $('#vendor').val()+'&product='+$('#product').val()).then(function (data) {
+								console.log(data);
+				var arr = _.forEach(data.data,function(d){
+						if(d ==""){
+								d = "empty";
+						}
+				})
+				$scope.ven.versions = arr;
+		});
+	}
+
+	/*
+			get exploits
+	*/
+
+
+	 $scope.getExploits = function(){
+		 var root = {
+	 			 name : $('#vendor').val()+"/"+$('#product').val()
+	 	 };
+		 var newData = [];
+			$http.get('ajax/tableAndChart/getTreeChart.php?vendor=' + $('#vendor').val()
+																		+ '&product=' + $('#product').val()
+																		+ '&version=' + $('#version').val())
+						.then(function(data){
+							newData = data.data;
+			 console.log(newData);
+			 root.children = _.map(newData,function(d){
+				 var obj = {};
+							if(d == ""){
+									obj.name = "empty";
+									obj.vers_num = "empty";
+							}else{
+									obj.name = d;
+									obj.vers_num = d;
+							}
+									return obj;
+					});
+					console.log("root1",root);
+			 d3.select("svg").remove();
+			 var m = [20, 120, 20, 120],
+					 w = 1920 - m[1] - m[3],
+					 h = 1400 - m[0] - m[2],
+					 i = 0;
+
+			 var tree = d3.layout.tree()
+					 .size([h, w]);
+
+			 var diagonal = d3.svg.diagonal()
+					 .projection(function (d) {
+							 return [d.y, d.x];
+					 });
+
+			 var vis = d3.select("#treeChart").append("svg:svg")
+					 .attr("width", w + m[1] + m[3])
+					 .attr("height", h + m[0] + m[2])
+					 .append("svg:g")
+					 .attr("transform", "translate(" + m[3] + "," + m[0] + ")");
+
+			 root.x0 = h / 2;
+			 root.y0 = 0;
+
+			 function toggleAll(d) {
+					 if (d.children) {
+							 d.children.forEach(toggleAll);
+							 toggle(d);
+					 }
+			 }
+
+			 // Initialize the display to show a few nodes.
+			 root.children.forEach(toggleAll);
+			 //toggle(root.children[1]);
+			 // toggle(root.children[1].children[2]);
+			 //toggle(root.children[9]);
+			 //toggle(root.children[9].children[0]);
+			 update(root);
+			 console.log(root);
+			 function update(source) {
+
+					 var duration = d3.event && d3.event.altKey ? 5000 : 500;
+
+					 // Compute the new tree layout.
+					 var nodes = tree.nodes(root).reverse();
+
+					 // Normalize for fixed-depth.
+					 nodes.forEach(function (d) {
+							 d.y = d.depth * 280;
+					 });
+
+					 // Update the nodes…
+					 var node = vis.selectAll("g.node")
+							 .data(nodes, function (d) {
+									 return d.id || (d.id = ++i);
+							 });
+
+					 // Enter any new nodes at the parent's previous position.
+					 var nodeEnter = node.enter().append("svg:g")
+							 .attr("class", "node")
+							 .attr("transform", function (d) {
+									 return "translate(" + source.y0 + "," + source.x0 + ")";
+							 })
+							 .on("click", function (d) {
+									 toggle(d);
+							 });
+
+					 nodeEnter.append("svg:circle")
+							 .attr("r", 1e-6)
+							 .style("fill", function (d) {
+									 return d._children ? "lightsteelblue" : "#fff";
+							 });
+
+					 nodeEnter.append("svg:text")
+							 .attr("x", function (d) {
+									 return d.children || d._children ? -10 : 10;
+							 })
+							 .attr("dy", ".35em")
+							 .attr("text-anchor", function (d) {
+									 return d.children || d._children ? "end" : "start";
+							 })
+							 .text(function (d) {
+									 return d.name;
+							 })
+							 .style("fill-opacity", 1e-6);
+
+					 // Transition nodes to their new position.
+					 var nodeUpdate = node.transition()
+							 .duration(duration)
+							 .attr("transform", function (d) {
+									 return "translate(" + d.y + "," + d.x + ")";
+							 });
+
+					 nodeUpdate.select("circle")
+							 .attr("r", 3.5)
+							 .style("fill", function (d) {
+									 return d._children ? "lightsteelblue" : "#fff";
+							 });
+
+					 nodeUpdate.select("text")
+							 .style("fill-opacity", 1);
+
+					 // Transition exiting nodes to the parent's new position.
+					 var nodeExit = node.exit().transition()
+							 .duration(duration)
+							 .attr("transform", function (d) {
+									 return "translate(" + source.y + "," + source.x + ")";
+							 })
+							 .remove();
+
+					 nodeExit.select("circle")
+							 .attr("r", 1e-6);
+
+					 nodeExit.select("text")
+							 .style("fill-opacity", 1e-6);
+
+					 // Update the links…
+					 var link = vis.selectAll("path.link")
+							 .data(tree.links(nodes), function (d) {
+									 return d.target.id;
+							 });
+
+					 // Enter any new links at the parent's previous position.
+					 link.enter().insert("svg:path", "g")
+							 .attr("class", "link")
+							 .attr("d", function (d) {
+									 var o = {x: source.x0, y: source.y0};
+									 return diagonal({source: o, target: o});
+							 })
+							 .transition()
+							 .duration(duration)
+							 .attr("d", diagonal);
+
+					 // Transition links to their new position.
+					 link.transition()
+							 .duration(duration)
+							 .attr("d", diagonal);
+
+					 // Transition exiting nodes to the parent's new position.
+					 link.exit().transition()
+							 .duration(duration)
+							 .attr("d", function (d) {
+									 var o = {x: source.x, y: source.y};
+									 return diagonal({source: o, target: o});
+							 })
+							 .remove();
+
+					 // Stash the old positions for transition.
+					 nodes.forEach(function (d) {
+							 d.x0 = d.x;
+							 d.y0 = d.y;
+					 });
+			 }
+
+					 // Toggle children.
+			 var depthTwoArr;
+			 var depthTwoTimes= 0;
+			 var depthTwoChildren;
+			 var depthThreeArr;
+			 var depthThreeTimes= 0;
+			 var depthThreeChildren;
+			 function toggle(d) {
+					 console.log(d);
+					 if(d.name == "Load More" && d.depth == 2){
+							 console.log(depthTwoArr);
+							 console.log(depthTwoTimes);
+							 var temp = _.map(depthTwoArr[depthTwoTimes], function (d) {
+									 var name;
+									 /*if(d.cvename == null)
+									 {
+											 if (d[Object.keys(d)[0]] == "") {
+													 name = "empty";
+											 } else {
+													 name = d[Object.keys(d)[0]];
+											 }
+											 return {
+													 name: name
+											 }
+									 }else{
+											 if (d[Object.keys(d)[1]] == "") {
+													 name = "empty";
+											 } else {
+													 name = d[Object.keys(d)[1]];
+											 }
+											 return {
+													 name: name
+											 }
+									 }*/
+									 return {
+										 name : d.edition
+									 }
+							 });
+
+							 depthTwoChildren.pop();
+							 depthTwoChildren = depthTwoChildren.concat(temp);
+							 depthTwoTimes++;
+							 if(depthTwoTimes < depthTwoArr.length){
+									 depthTwoChildren.push({
+											 name : "Load More"
+									 });
+							 }
+							 d.parent.children = depthTwoChildren;
+							 update(d);
+					 }else if(d.name == "Load More" && d.depth == 3){
+
+							 var temp = _.map(depthThreeArr[depthThreeTimes], function (d) {
+									 console.log("temp",d);
+									 /*if(d.cvename == null)
+									 {
+											 if (d[Object.keys(d)[0]] == "") {
+													 name = "empty";
+											 } else {
+													 name = d[Object.keys(d)[0]];
+											 }
+											 return {
+													 name: name
+											 }
+									 }else{
+
+											 if (d[Object.keys(d)[1]] == "") {
+													 name = "empty";
+											 } else {
+													 name = d[Object.keys(d)[1]];
+											 }
+											 return {
+													 name: name
+											 }
+									 }*/
+									 return {
+										 name : d.cvename
+									 }
+							 });
+							 depthThreeChildren.pop();
+							 depthThreeChildren = depthThreeChildren.concat(temp);
+							 depthThreeTimes++;
+							 if(depthThreeTimes < depthThreeArr.length){
+									 depthThreeChildren.push({
+											 name : "Load More"
+									 });
+							 }
+							 console.log("depthThreeChildren",depthThreeChildren);
+							 d.parent.children = depthThreeChildren;
+							 update(d);
+					 }else if(d.depth == 2 || d.depth ==1){
+							 if(d.depth == 1) {
+									 depthTwoArr = [];
+									 depthTwoTimes = 0;
+									 depthTwoChildren = [];
+							 }
+							 if(d.depth == 2) {
+									 depthThreeArr = [];
+									 depthThreeTimes = 0;
+									 depthThreeChildren = [];
+							 }
+							 if (d.children) {
+									 d._children = d.children;
+									 d.children = null;
+							 } else {
+									 d.children = d._children;
+									 d._children = null;
+							 }
+							 if (d.parent) {
+									 d.parent.children.forEach(function (element) {
+											 if (d !== element) {
+													 collapse(element);
+											 }
+									 });
+							 }
+							 var path = "vendor="+$("#vendor").val()+"&product="+$("#product").val()+"&version=";
+							 var depth = 0 ;
+	 						if(d.depth == 1){
+	 						  path += d.name;
+								depth = 1;
+	 						}else if(d.depth == 2){
+	 						  path+= d.parent.name+"&edition="+d.name;
+								depth = 2;
+	 						}else if(d.depth ==3){
+								depth = 3;
+	 						}
+	 						console.log("path",path);
+
+	 						$http.get('ajax/tableAndChart/getEditionInfo.php?'+path)
+									 .then(function (data) {
+										 console.log("data",data);
+										 var res = _.map(data.data,function(d){
+											 if(depth == 1){
+												 return {
+ 														edition : d
+ 												};
+											}else if(depth == 2){
+												return {
+													 cvename : d
+											 };
+											}
+
+										 });
+										 console.log("res",res);
+											 if (res.length > 7) {
+													 var totalArray;
+													 totalArray = _.chunk(res, 7);
+
+													 var children = _.map(totalArray[0], function (d) {
+															 var name;
+																	/*	if(d[Object.keys(d)[1]] == null)
+																		{
+																				if (d[Object.keys(d)[0]] == "") {
+																						name = "empty";
+																				} else {
+																						name = d[Object.keys(d)[0]];
+																				}
+																				return {
+																						name: name
+																				}
+																		}else{
+
+																				if (d[Object.keys(d)[1]] == "") {
+																						name = "empty";
+																				} else {
+																						name = d[Object.keys(d)[1]];
+																				}
+																				return {
+																						name: name
+																				}
+																		}*/
+																		if(depth == 2){
+																			return {
+																				name : d.cvename
+																			}
+																		}else if(depth == 1){
+																				return {
+																					name : d.edition == "" ? "empty":d.edition
+																				};
+																			}else{
+																				return {
+																					name : " "
+																				}
+																			}
+													 });
+													 console.log("children",children);
+													 if(d.depth == 1){
+															 depthTwoArr = totalArray;
+															 depthTwoChildren = children;
+															 depthTwoChildren.push({
+																	 name: "Load More"
+															 });
+															 depthTwoTimes++;
+													 }else if(d.depth == 2){
+															 depthThreeArr = totalArray;
+															 depthThreeChildren = children;
+													 }else{
+
+													 }
+													 console.log(depthTwoArr);
+													 if(d.depth == 1){
+													 }else if(d.depth == 2){
+															 depthThreeChildren.push({
+																	 name: "Load More"
+															 });
+															 depthThreeTimes++;
+													 }else{
+
+													 }
+											 }else{
+													 var children;
+													 children = _.map(res, function (d) {
+															 var name;
+															 /*if(d.cvename == null)
+															 {
+																	 if (d[Object.keys(d)[0]] == "") {
+																			 name = "empty";
+																	 } else {
+																			 name = d[Object.keys(d)[0]];
+																	 }
+																	 return {
+																			 name: name
+																	 }
+															 }else{
+																	 if (d[Object.keys(d)[1]] == "") {
+																			 name = "empty";
+																	 } else {
+																			 name = d[Object.keys(d)[1]];
+																	 }
+																	 return {
+																			 name: name
+																	 }
+															 }*/
+															 if(depth == 2){
+																  console.log("cvename",d);
+																 return {
+																	 name : d.cvename
+																 }
+															 }else if(depth == 1){
+																 console.log("edition",d);
+																	 return {
+																		 name : d.edition == "" ? "empty":d.edition
+																	 };
+																 }else{
+																	 return {
+																		 name : " "
+																	 }
+																 }
+
+													 });
+													 if(d.depth == 1){
+															 depthTwoChildren = children;
+													 }else if(d.depth == 2){
+															 depthThreeChildren = children;
+													 }else{
+
+													 }
+											 }
+											 d.children = children;
+											 update(d);
+									 });
+
+					 }else if(d.depth == 3){
+							console.log("depth3");
+					 }else{
+							 console.log("wrong");
+					 }
+					 console.log("d",d);
+			 }
+
+			 function collapse(d) {
+					 if (d.children) {
+							 d._children = d.children;
+							 d._children.forEach(collapse);
+							 d.children = null;
+					 }
+			 }
+						});
+}
+	});
+
+	</script>
+
+  </body>
+</html>

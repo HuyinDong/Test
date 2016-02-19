@@ -16,7 +16,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.css" rel="stylesheet" type="text/css">
     <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/style-responsive.css">
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
@@ -35,6 +34,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <![endif]-->
     <style>
     </style>
+
   </head>
   <!--
   BODY TAG OPTIONS:
@@ -100,15 +100,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <ul class="sidebar-menu">
             <!-- Optionally, you can add icons to the links -->
 
-            <li class = "active"><a href="index.html"><i class="fa fa-tachometer"></i>Dashboard</span></a></li>
+            <li ><a href="index.html"><i class="fa fa-tachometer"></i>Dashboard</span></a></li>
           <li><a href="cve.html"><i class="fa fa-bug"></i> CVEs </span>  <span class="label bg-orange pull-right">33</span></a></li>
 
             <li class="treeview">
               <a class="dropmenu" href="#"><i class="fa fa-sitemap"></i>  <span class="hidden-tablet"> Exploits </span>  <i class="fa fa-angle-left pull-right"></i> </a>
               <ul class="treeview-menu" >
                 <li> <a href="exploit.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> Exploits </span>   <span class="label bg-purple pull-right"> 16023</span> </a></li>
-                <li><a href="metasploit.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> Metasploits </span>  <span class="label bg-green pull-right"> 3119 </span> </a></li>
-                <li><a href="int.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> INT Exploits </span>  <span class="label bg-blue pull-right"> 21692 </span> </a></li>
+								<li><a href="metasploit.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> Metasploits </span>  <span class="label bg-green pull-right"> 3119 </span> </a></li>
+								<li><a href="int.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> INT Exploits </span>  <span class="label bg-blue pull-right"> 21692 </span> </a></li>
               </ul>
             </li>
             <li class="treeview">
@@ -118,7 +118,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <li><a href="cnvd.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> CNVD </span>  <span class="label bg-maroon pull-right"> 3119 </span> </a></li>
               </ul>
             </li>
-              <li><a href="vendor.html"><i class="fa fa-list"></i> Vendors </span>  <span class="label bg-light-blue pull-right">33</span></a></li>
+              <li class = "active"><a href="vendors.html"><i class="fa fa-list"></i> Vendors </span>  <span class="label bg-light-blue pull-right">33</span></a></li>
                 <li><a href="references.html"><i class="fa fa-info-circle"></i> References </span>  <span class="label bg-red pull-right">33</span></a></li>
             <li class="treeview">
               <a class="dropmenu" href="#"><i class="fa fa-sitemap"></i>  <span class="hidden-tablet"> Smart Exploits </span>  <i class="fa fa-angle-left pull-right"></i> </a>
@@ -141,11 +141,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
              <ul class="breadcrumb">
 				<li>
 					<i class="fa fa-home"></i>
-					<a href="index.php">Home</a>
+					<a href="index.html">Home</a>
 				</li>
 				<li>
-	         <i class="fa fa-dashboard"></i>
-           <a href="#">Dashboard</a></li>
+	         <i class="fa fa-list"></i>
+           <a href="#">Vendors</a></li>
 			</ul>
          </div>
 
@@ -154,115 +154,38 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
         <!-- Main content -->
         <section class="content" >
+          <div class = "col-xs-4" style = "margin-bottom : 20px;">
+            <div class="input-group input-group-sm">
+              <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Vendors, Products" />
+              <span class="input-group-btn">
+                <button class="btn btn-info btn-flat" type="button" id = "searching"><i class="fa fa-search" ></i>Search Vendors </button>
+              </span>
+            </div><!-- /input-group -->
+          </div>
+          <div class="col-xs-12">
+                        <div class="box box-info">
+                          <div class="box-header with-border">
+                            <h3 class="box-title" id = "vendorTotal"></h3>
+                          </div><!-- /.box-header -->
+                          <div class="box-body">
+                            <table id="example" class="table table-bordered display">
+                              <thead>
+                                <tr>
+                                  <th>Vendors Name</th>
+                                  <th>Product Name</th>
+                                  <th>Version</th>
+                                  <th>Edition</th>
+                                  <th>CVE</th>
+                                </tr>
+                              </thead>
 
-           <div class="row">
-              <div class="col-md-6">
-                <!-- AREA CHART -->
-                <div class="box box-primary">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Vulnerabilities Severity</h3>
-                    <div class="box-tools pull-right">
-                      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                      <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                  </div>
-                  <div class="box-body">
-                    <div class="chart">
-                      		<div id="VulnerabilitiesSeverity" style="height:250px"></div>
-                    </div>
-                  </div><!-- /.box-body -->
-                </div><!-- /.box -->
-              </div>
-              <div class="col-md-6">
-                <!-- AREA CHART -->
-                <div class="box box-danger">
-                  <div class="box-header with-border">
-                    <h3 class="box-title">Exploits Type</h3>
-                    <div class="box-tools pull-right">
-                      <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                      <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                    </div>
-                  </div>
-                  <div class="box-body">
-                    <div class="chart">
-                      <div id="VulnerabilitiesType" style="height:250px"></div>
-                    </div>
-                  </div><!-- /.box-body -->
-                </div><!-- /.box -->
-              </div>
-            </div>
-            <div class="row">
-               <div class="col-md-6">
-                 <!-- AREA CHART -->
-                 <div class="box box-info">
-                   <div class="box-header with-border">
-                     <h3 class="box-title"> <i class="fa fa-unlock"></i>Exploits - 1999 to 2016</h3>
-                     <div class="box-tools pull-right">
-                       <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                       <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                     </div>
-                   </div>
-                   <div class="box-body">
-                     <div class="chart">
-                    <div id="exploit_year"  style="height:225px" ></div>
-                     </div>
-                   </div><!-- /.box-body -->
-                 </div><!-- /.box -->
-               </div>
-               <div class="col-md-6">
-                 <!-- AREA CHART -->
-                 <div class="box box-success">
-                   <div class="box-header with-border">
-                     <h3 class="box-title"><i class="fa fa-bug"></i>   CVEs - 1999 to 2016</h3>
-                     <div class="box-tools pull-right">
-                       <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                       <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                     </div>
-                   </div>
-                   <div class="box-body">
-                     <div class="chart">
-                       	<div id="cve_year"  style="height:225px"></div>
-                     </div>
-                   </div><!-- /.box-body -->
-                 </div><!-- /.box -->
-               </div>
-             </div>
-             <div class="row">
-                <div class="col-md-6">
-                  <!-- AREA CHART -->
-                  <div class="box box-primary">
-                    <div class="box-header with-border">
-                      <h3 class="box-title"> <i class="fa fa-unlock"></i>  Vulnerabilities Rank by Vendor</h3>
-                      <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                            </table>
+                          </div>
+                            <button class="btn bg-purple btn-flat" type="button" id = "load">Load 20 more items</button>
+                        </div>
+
                       </div>
-                    </div>
-                    <div class="box-body">
-                      <div class="chart">
-                     <div id="vulnerabilities_vendor"  style="height:225px"    ></div>
-                      </div>
-                    </div><!-- /.box-body -->
-                  </div><!-- /.box -->
-                </div>
-                <div class="col-md-6">
-                  <!-- AREA CHART -->
-                  <div class="box box-danger">
-                    <div class="box-header with-border">
-                      <h3 class="box-title"><i class="fa fa-bug"></i>  Vulnerabilities Rank by Product</h3>
-                      <div class="box-tools pull-right">
-                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                        <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                      </div>
-                    </div>
-                    <div class="box-body">
-                      <div class="chart">
-                          	<div id="vulnerabilities_product"  style="height:225px"    ></div>
-                      </div>
-                    </div><!-- /.box-body -->
-                  </div><!-- /.box -->
-                </div>
-              </div>
+
         </section><!-- /.content -->
       </div><!-- /.content-wrapper -->
 
@@ -288,9 +211,66 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/app.min.js"></script>
-    <script src="//d3js.org/d3.v3.min.js" charset="utf-8"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/c3/0.4.10/c3.min.js" type="text/javascript"></script>
-    <script src="includes/mycharts.js"></script>
+    <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
 
+    <script>
+    $(document).ready(function() {
+      $.ajax({
+          url : "ajax/vendor.php?limits=20",
+          success : function(data){
+              $("#vendorTotal").html("Vendor Data Table | Total : "+JSON.parse(data).total+" Systems");
+          }
+      })
+      //Search
+
+
+      // Popup window code
+      function newPopup(url) {
+      	popupWindow = window.open(
+      		url,'popUpWindow','height=800,width=1000,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+      }
+      var limits = 20;
+var table = $('#example').DataTable( {
+
+      ajax:  "ajax/vendor.php?limits="+limits,
+      bPaginate: false,
+      columns: [
+          { "data": "vendor_name"},
+          { "data": "prod_name" },
+          { "data": "vers_num" },
+          { "data": "edition" },
+          { "data" : "cvename",
+          "fnCreatedCell":function (nTd, sData, oData, iRow, iCol) {
+            var id = oData.vendor_id;
+            console.log(id);
+            $.ajax({
+              'url' : 'ajax/vendor_cve.php?vendor_id='+id,
+              success : function(data){
+                  var data = JSON.parse(data);
+                  var cves = "";
+                  data.forEach(function(ele){
+                    cves+=ele.cvename+"<br>";
+                  });
+                  $(nTd).html(cves);
+              }
+            })
+          }
+          }
+      ],
+      "columnDefs": [
+        { "width": "10%", "targets": 0 },
+        { "width": "8%", "targets": [1,2] }
+        ]
+      });
+
+      $("#load").click(function(){
+          limits += 20;
+          table.ajax.url("ajax/vendor.php?limits="+limits).load();
+          });
+      $("#searching").click(function(){
+          table.ajax.url("ajax/vendor.php?limits=20&keywords="+$("#keywords").val()).load();
+        });
+      });
+    </script>
   </body>
 </html>
