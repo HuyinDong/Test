@@ -23,6 +23,13 @@
 	<link  href="dist/css/style.css" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 	<!-- end: CSS -->
+  <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js"></script>
+    <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPlain.js"></script>
+    <script src="http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCpp.js"></script>
+
+    <link   href="http://alexgorbatchev.com/pub/sh/current/styles/shCore.css" rel="stylesheet">
+ 	<link   href="http://alexgorbatchev.com/pub/sh/current/styles/shCoreDefault.css" rel="stylesheet">
+
 
 
 	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -38,87 +45,66 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<!-- end: Favicon -->
+	<script>
 
+
+	</script>
 </head>
-	<div class="container" ng-app = "cveDetail" ng-controller = "cveDetailController">
+	<div class="container" ng-app = "exploitDetail" ng-controller = "exploitDetailCtrl">
 	<hr>
+	<div class = "row">
 		<div class="col-md-12" align=center>
 			<table class="table table-striped">
-				<thead>
-				<tr>
- 				  <th colspan=2>CVE</th>
+					<thead>
+					<tr>
+	 				  <th colspan=2>CVE</th>
 
-				</tr>
-			  </thead>
-			  <tbody>
-          <tr>
-				  <td> <b>Name</b> {{cves.cvename}}</td>
-				  <td> <b>Published date</b>  {{cves.published}}</td>
-				</tr>
-				<tr>
-				  <td> <b>Modified date</b> {{cves.modified}} </td>
-				  <td> <b>Severity </b> {{cves.severity}} </td>
-				</tr>
-				<tr>
-				  <td> <b>CVSS_version</b> <?=$cve_row["CVSS_version"]?>{{cves.CVSS_version}} </td>
-				  <td> <b>CVSS_score</b> <?=$cve_row["CVSS_score"]?>{{cves.CVSS_score}} </td>
-				</tr>
-				<tr>
-				  <td> <b>CVSS_base_score </b><?=$cve_row["CVSS_base_score"]?>{{cves.CVSS_base_score}} </td>
-				  <td> <b>CVSS_impact_subscore</b> <?=$cve_row["CVSS_impact_subscore"]?>{{cves.CVSS_impact_subscore}} </td>
-				</tr>
-				<tr>
-				  <td> <b>CVSS_exploit_subscore </b><?=$cve_row["CVSS_exploit_subscore"]?>{{cves.CVSS_exploit_subscore}} </td>
-				  <td> <b>CVSS_vector </b><?=$cve_row["CVSS_vector"]?>{{cves.CVSS_vector}} </td>
-				</tr>
-				<tr>
-				  <td colspan=2> <b>Descript</b> <?=$cve_row["descript"]?>{{cves.descript}}  </td>
-				</tr>
-
-			  </tbody>
-			</table>
-
-
-
-			<table class="table table-striped">
-				<thead>
-				<tr>
- 				  <th>References  </th>
- 				  <th>Source</th>
-
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr ng-repeat = "ref in refs">
-				  <td> <a href='{{ref.rurl}}' style="color:green" target='refs'> {{ref.rtitle}} <i class="fa fa-external-link-square" ></i> </a> </td>
- 				  <td>{{ref.source}} </td>
-				</tr>
-
-			  </tbody>
-			</table>
-
-			<table class="table table-striped">
-				<thead>
-				<tr>
- 				  <th>Vendors Name</th>
- 				  <th>Prod Name</th>
- 				  <th>Version</th>
- 				  <th>Edition</th>
-				</tr>
-			  </thead>
-			  <tbody>
-				<tr ng-repeat = "vendor in vendors">
-				  <td> {{vendor.vendor_id}}    </td>
-				  <td> {{vendor.prod_name}}   </td>
-				  <td> {{vendor.vers_num}}    </td>
-				  <td> {{vendor.edition}}   </td>
-				</tr>
-
-			  </tbody>
+					</tr>
+				  </thead>
+				  <tbody>
+	          <tr>
+					  	<td> <b>Name</b> {{cves.cvename}}</td>
+						</tr>
+						<tr>
+					  	<td> <b>Published date</b>  {{cves.published}}</td>
+						</tr>
+						<tr>
+					  	<td> <b>Severity</b> {{cves.severity}} </td>
+						</tr>
+						<tr>
+						<td> <b>Description </b> {{cves.descript}} </td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	</div>
+	<div class="row">
+					 <div class="col-md-12">
+						 <!-- Custom Tabs -->
+						 <div class="nav-tabs-custom">
+							 <ul class="nav nav-tabs" ng-repeat = "ep in exploits">
+								 <li class="active"><a href="#tab_1" data-toggle="tab">ep.</a></li>
+								 <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
+								 <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
+							 </ul>
+							 <div class="tab-content">
+								 <div class="tab-pane active" id="tab_1">
+									  <pre class="brush: c;gutter:true;auto-links: false, smart-tabs: true;;">
+										 {{codes}}
 
+									 </pre>
+								 </div><!-- /.tab-pane -->
+							 <div class="tab-pane " id="tab_2">asdf
+							 </div>
+							  <div class="tab-pane " id="tab_3">zxcv
+								</div>
+							 </div><!-- /.tab-content -->
+						 </div><!-- nav-tabs-custom -->
+					 </div><!-- /.col -->
+
+				 </div> <!-- /.row -->
+				 <!-- END CUSTOM TABS -->
+</div>
 
 
     <!-- Bootstrap core JavaScript
@@ -127,25 +113,36 @@
       <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
     <!-- Bootstrap 3.3.5 -->
       <script src="bootstrap/js/bootstrap.min.js"></script>
-      <script src = "js/angular/angular.min.js"></script>
-      <script src = "js/lodash/lodash.min.js"></script>
-      <script>
-        var cveDetail = angular.module('cveDetail',[]);
-        cveDetail.controller('cveDetailController',function($scope,$http){
+			<script src = "js/angular/angular.min.js"></script>
+			<script src = "js/lodash/lodash.min.js"></script>
+			<script>
+	    var exploitDetail = angular.module('exploitDetail',[]);
+			exploitDetail.controller('exploitDetailCtrl',function($scope,$http,$timeout){
+							SyntaxHighlighter.all();
+					    var cve = location.search.split('cve=')[1];
+							$http.get('ajax/tableAndChart/getTableDetail.php?cve='+cve)
+										.then(function(data){
 
-              var id = location.search.split('cid=')[1];
-              $http.get('ajax/cve_detail.php?cid='+id)
-                   .then(function(data){
-                      var data = data.data;
-                      $scope.cves = data.cves[0];
-                      $scope.refs = data.refs;
-                      $scope.vendors = data.vendors;
-                      console.log($scope.refs);
-                      console.log($scope.vendors);
-                   });
-        });
+											var items = data.data;
+											console.log(items);
+											$scope.cves = items.cves[0];
+											$scope.exploits = items.exploits;
+											$scope.codes =  "function(){\n"+
+																			"int i = 0;\n"+
+																			"for(;i<10;i++)\n"+
+																			"cout << This is a good example;\n"+
+																			"}}";
+																			SyntaxHighlighter.all();
+											});
+
+												$timeout(function(){
+
+												},2500);
+
+			});
+
+
       </script>
-
 
     </body>
 </html>
