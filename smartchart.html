@@ -115,38 +115,7 @@ stroke-width: 1.5px;
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
 
-          <!-- Sidebar Menu -->
-          <ul class="sidebar-menu">
-            <!-- Optionally, you can add icons to the links -->
 
-            <li ><a href="index.html"><i class="fa fa-tachometer"></i>Dashboard</span></a></li>
-          <li ><a href="cve.html"><i class="fa fa-bug"></i> CVEs </span>  <span class="label bg-orange pull-right" name = "numbers"></span></a></li>
-
-            <li class="treeview">
-              <a class="dropmenu" href="#"><i class="fa fa-sitemap"></i>  <span class="hidden-tablet"> Exploits </span>  <i class="fa fa-angle-left pull-right"></i> </a>
-              <ul class="treeview-menu" >
-                <li > <a href="exploit.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> Exploits </span>   <span class="label bg-purple pull-right" name = "numbers"> </span> </a></li>
-                <li><a href="metasploit.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> Metasploits </span>  <span class="label bg-green pull-right" name = "numbers">  </span> </a></li>
-                <li><a href="int.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> INT Exploits </span>  <span class="label bg-blue pull-right" name = "numbers">  </span> </a></li>
-              </ul>
-            </li>
-            <li class="treeview">
-              <a class="dropmenu" href="#"><i class="fa fa-sitemap"></i>  <span class="hidden-tablet"> Vulnerabilities </span>  <i class="fa fa-angle-left pull-right"></i> </a>
-              <ul class="treeview-menu" >
-                <li> <a href="sef.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> SEF </span>   <span class="label bg-navy pull-right" name = "numbers"> </span> </a></li>
-                <li><a href="cnvd.html"><i class="fa fa-unlock"></i> <span class="hidden-tablet"> CNVD </span>  <span class="label bg-maroon pull-right" name = "numbers">  </span> </a></li>
-              </ul>
-            </li>
-              <li><a href="vendor.html"><i class="fa fa-list"></i> Vendors </span>  <span class="label bg-light-blue pull-right" name = "numbers"></span></a></li>
-                <li><a href="reference.html"><i class="fa fa-info-circle"></i> References </span>  <span class="label bg-red pull-right" name = "numbers"></span></a></li>
-            <li class="treeview">
-              <a class="dropmenu" href="#"><i class="fa fa-sitemap"></i>  <span class="hidden-tablet"> Smart Exploits </span>  <i class="fa fa-angle-left pull-right"></i> </a>
-              <ul class="treeview-menu" >
-                <li> <a href="smarttable.html"><i class="fa fa-table"></i> <span class="hidden-tablet"> Smart Table </span> </a></li>
-                <li class = "active"><a href="smartchart.html"><i class="fa fa-random"></i> <span class="hidden-tablet"> Smart Chart  </span> </a></li>
-              </ul>
-            </li>
-          </ul><!-- /.sidebar-menu -->
 
 
          </section>
@@ -251,7 +220,6 @@ stroke-width: 1.5px;
 		*/
 
 		$(document).on('keyup', '#vendor', getVendorInfo);
-		console.log("a");
 		var excuted = false;
 		function getVendorInfo() {
 			if($('#vendor').val().length > 2 && !excuted){
@@ -260,7 +228,6 @@ stroke-width: 1.5px;
 				});
 				excuted = true;
 			}else if($('#vendor').val().length < 2){
-					console.log("Not run");
 					excuted  = false;
 			}
 	}
@@ -279,7 +246,6 @@ stroke-width: 1.5px;
 					$scope.ven.filter = '';
 			}
 			$http.get("ajax/tableAndChart/getProductInfo.php?vendor=" + $scope.ven.selectedVendor).then(function (data) {
-					console.log(data);
 					$scope.ven.products = data.data;
 			});
 	};
@@ -292,7 +258,6 @@ stroke-width: 1.5px;
 	function getVersionNum(){
 		$http.get('ajax/tableAndChart/getVersionInfo.php?vendor='
 							+ $('#vendor').val()+'&product='+$('#product').val()).then(function (data) {
-								console.log(data);
 				var arr = _.forEach(data.data,function(d){
 						if(d ==""){
 								d = "empty";
@@ -317,7 +282,6 @@ stroke-width: 1.5px;
 																		+ '&version=' + $('#version').val())
 						.then(function(data){
 							newData = data.data;
-			 console.log(newData);
 			 root.children = _.map(newData,function(d){
 				 var obj = {};
 							if(d == ""){
@@ -329,7 +293,6 @@ stroke-width: 1.5px;
 							}
 									return obj;
 					});
-					console.log("root1",root);
 			 d3.select("svg").remove();
 			 var m = [20, 120, 20, 120],
 					 w = 1920 - m[1] - m[3],
@@ -362,12 +325,8 @@ stroke-width: 1.5px;
 
 			 // Initialize the display to show a few nodes.
 			 root.children.forEach(toggleAll);
-			 //toggle(root.children[1]);
-			 // toggle(root.children[1].children[2]);
-			 //toggle(root.children[9]);
-			 //toggle(root.children[9].children[0]);
 			 update(root);
-			 console.log(root);
+
 			 function update(source) {
 
 					 var duration = d3.event && d3.event.altKey ? 5000 : 500;
@@ -491,32 +450,9 @@ stroke-width: 1.5px;
 			 var depthThreeTimes= 0;
 			 var depthThreeChildren;
 			 function toggle(d) {
-					 console.log(d);
 					 if(d.name == "Load More" && d.depth == 2){
-							 console.log(depthTwoArr);
-							 console.log(depthTwoTimes);
 							 var temp = _.map(depthTwoArr[depthTwoTimes], function (d) {
 									 var name;
-									 /*if(d.cvename == null)
-									 {
-											 if (d[Object.keys(d)[0]] == "") {
-													 name = "empty";
-											 } else {
-													 name = d[Object.keys(d)[0]];
-											 }
-											 return {
-													 name: name
-											 }
-									 }else{
-											 if (d[Object.keys(d)[1]] == "") {
-													 name = "empty";
-											 } else {
-													 name = d[Object.keys(d)[1]];
-											 }
-											 return {
-													 name: name
-											 }
-									 }*/
 									 return {
 										 name : d.edition
 									 }
@@ -535,28 +471,6 @@ stroke-width: 1.5px;
 					 }else if(d.name == "Load More" && d.depth == 3){
 
 							 var temp = _.map(depthThreeArr[depthThreeTimes], function (d) {
-									 console.log("temp",d);
-									 /*if(d.cvename == null)
-									 {
-											 if (d[Object.keys(d)[0]] == "") {
-													 name = "empty";
-											 } else {
-													 name = d[Object.keys(d)[0]];
-											 }
-											 return {
-													 name: name
-											 }
-									 }else{
-
-											 if (d[Object.keys(d)[1]] == "") {
-													 name = "empty";
-											 } else {
-													 name = d[Object.keys(d)[1]];
-											 }
-											 return {
-													 name: name
-											 }
-									 }*/
 									 return {
 										 name : d.cvename
 									 }
@@ -569,7 +483,6 @@ stroke-width: 1.5px;
 											 name : "Load More"
 									 });
 							 }
-							 console.log("depthThreeChildren",depthThreeChildren);
 							 d.parent.children = depthThreeChildren;
 							 update(d);
 					 }else if(d.depth == 2 || d.depth ==1){
@@ -608,11 +521,8 @@ stroke-width: 1.5px;
 	 						}else if(d.depth ==3){
 								depth = 3;
 	 						}
-	 						console.log("path",path);
-
 	 						$http.get('ajax/tableAndChart/getEditionInfo.php?'+path)
 									 .then(function (data) {
-										 console.log("data",data);
 										 var res = _.map(data.data,function(d){
 											 if(depth == 1){
 												 return {
@@ -625,34 +535,14 @@ stroke-width: 1.5px;
 											}
 
 										 });
-										 console.log("res",res);
+
 											 if (res.length > 7) {
 													 var totalArray;
 													 totalArray = _.chunk(res, 7);
 
 													 var children = _.map(totalArray[0], function (d) {
 															 var name;
-																	/*	if(d[Object.keys(d)[1]] == null)
-																		{
-																				if (d[Object.keys(d)[0]] == "") {
-																						name = "empty";
-																				} else {
-																						name = d[Object.keys(d)[0]];
-																				}
-																				return {
-																						name: name
-																				}
-																		}else{
 
-																				if (d[Object.keys(d)[1]] == "") {
-																						name = "empty";
-																				} else {
-																						name = d[Object.keys(d)[1]];
-																				}
-																				return {
-																						name: name
-																				}
-																		}*/
 																		if(depth == 2){
 																			return {
 																				name : d.cvename
@@ -667,7 +557,7 @@ stroke-width: 1.5px;
 																				}
 																			}
 													 });
-													 console.log("children",children);
+
 													 if(d.depth == 1){
 															 depthTwoArr = totalArray;
 															 depthTwoChildren = children;
@@ -681,7 +571,7 @@ stroke-width: 1.5px;
 													 }else{
 
 													 }
-													 console.log(depthTwoArr);
+
 													 if(d.depth == 1){
 													 }else if(d.depth == 2){
 															 depthThreeChildren.push({
@@ -695,33 +585,14 @@ stroke-width: 1.5px;
 													 var children;
 													 children = _.map(res, function (d) {
 															 var name;
-															 /*if(d.cvename == null)
-															 {
-																	 if (d[Object.keys(d)[0]] == "") {
-																			 name = "empty";
-																	 } else {
-																			 name = d[Object.keys(d)[0]];
-																	 }
-																	 return {
-																			 name: name
-																	 }
-															 }else{
-																	 if (d[Object.keys(d)[1]] == "") {
-																			 name = "empty";
-																	 } else {
-																			 name = d[Object.keys(d)[1]];
-																	 }
-																	 return {
-																			 name: name
-																	 }
-															 }*/
+
 															 if(depth == 2){
-																  console.log("cvename",d);
+
 																 return {
 																	 name : d.cvename
 																 }
 															 }else if(depth == 1){
-																 console.log("edition",d);
+
 																	 return {
 																		 name : d.edition == "" ? "empty":d.edition
 																	 };
@@ -747,9 +618,9 @@ stroke-width: 1.5px;
 					 }else if(d.depth == 3){
 							console.log("depth3");
 					 }else{
-							 console.log("wrong");
+
 					 }
-					 console.log("d",d);
+
 			 }
 
 			 function collapse(d) {
@@ -762,18 +633,8 @@ stroke-width: 1.5px;
 						});
 }
 	});
-  $.ajax({
-      url : "data/all_total.json",
-      success : function(data){
-      $("[name=numbers]:eq(0)").append(data.CVE);
-      $("[name=numbers]:eq(1)").append(data.Exploit);
-      $("[name=numbers]:eq(2)").append(data.MetaExploit);
-      $("[name=numbers]:eq(3)").append(data.IntExploit);
-      $("[name=numbers]:eq(4)").append(data.SEF);
-      $("[name=numbers]:eq(5)").append(data.CNVD);
-      $("[name=numbers]:eq(6)").append(data.Vendor);
-      $("[name=numbers]:eq(7)").append(data.Ref);
-    }
+  $(".sidebar").load('sidebar.html',function(){
+      $("#sidebar_smarts").addClass("active");
   });
 	</script>
 
