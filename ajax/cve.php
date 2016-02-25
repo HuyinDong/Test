@@ -36,10 +36,7 @@ if ($vul_results) {
     while ($row = mysql_fetch_object($vul_results)) $cves[] = $row;
 }
 
-/*$cves[] = (object) array(
-      'cvename' => 'New Items Below:'
-   );
-*/
+
 $data = array();
 
 $data['data'] = $cves;

@@ -206,9 +206,15 @@ var table = $('#example').DataTable( {
           { "data": "rsource" }
       ]
       });
+      var times = 1;
       $("#load").click(function(){
           limits += 20;
-          table.ajax.url("ajax/reference.php?limits="+limits+"&keywords="+$("#keywords").val()).load();
+          table.ajax.url("ajax/reference.php?limits="+limits+"&keywords="+$("#keywords").val()).load(function(){
+            $('tbody  tr').eq(20*times).after(
+                          '<tr class="group"><td colspan="5">New Items Below</td></tr>'
+                      );
+                      times++;
+          });
           });
       $("#searching").click(function(){
           table.ajax.url("ajax/reference.php?limits=20&keywords="+$("#keywords").val()).load();

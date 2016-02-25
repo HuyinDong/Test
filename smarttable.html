@@ -236,7 +236,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 					$scope.ven.vendors = data.data;
 				});
 				excuted = true;
-			}else if($('#vendor').val().length < 2){			
+			}else if($('#vendor').val().length < 2){
 					excuted  = false;
 			}
 	}
@@ -300,13 +300,18 @@ var table = $('#example').DataTable( {
       { "width": "8%", "targets": [1,2] }
       ]
     });
-
+    var times = 1;
     $("#load").click(function(){
         limits += 20;
         table.ajax.url("ajax/tableAndChart/getTable.php?vendor=" + $('#vendor').val()
     																	+ "&product=" + $('#product').val()
     																	+ "&version=" + $('#version').val()
-                                      + "&limits="+limits).load();
+                                      + "&limits="+limits).load(function(){
+                                        $('tbody  tr').eq(20*times).after(
+                                                      '<tr class="group"><td colspan="5">New Items Below</td></tr>'
+                                                  );
+                                                  times++;
+                                      });
         });
     $("#searching").click(function(){
         table.ajax.url("ajax/tableAndChart/getTable.php?vendor=" + $('#vendor').val()

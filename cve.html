@@ -243,20 +243,16 @@ function newPopup(url) {
 
         ]
       });
-      //console.log($("#example tr:last"));
-
-      var node = table.row.add({
-        cvename : "asd",
-        published : "zxc",
-        modified : "fddf",
-        severity : "high",
-        descript : "asdsdfsdf"
-      }).draw().node();
-      $( node ).css( 'background', 'red' );
-      
+  
+      var times = 1;
       $("#load").click(function(){
           limits += 20;
-          table.ajax.url("ajax/cve.php?limits="+limits+"&keywords="+$("#keywords").val()).load();
+          table.ajax.url("ajax/cve.php?limits="+limits+"&keywords="+$("#keywords").val()).load(function(){
+            $('tbody  tr').eq(20*times).after(
+                          '<tr class="group"><td colspan="5">New Items Below</td></tr>'
+                      );
+                      times++;
+          });
           });
       $("#searching").click(function(){
           table.ajax.url("ajax/cve.php?limits=20&keywords="+$("#keywords").val()).load();

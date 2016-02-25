@@ -264,10 +264,15 @@ var table = $('#example').DataTable( {
         { "width": "8%", "targets": [1,2] }
         ]
       });
-
+      var times = 1;
       $("#load").click(function(){
           limits += 20;
-          table.ajax.url("ajax/vendor.php?limits="+limits+"&keywords="+$("#keywords").val()).load();
+          table.ajax.url("ajax/vendor.php?limits="+limits+"&keywords="+$("#keywords").val()).load(function(){
+            $('tbody  tr').eq(20*times).after(
+                          '<tr class="group"><td colspan="5">New Items Below</td></tr>'
+                      );
+                      times++;
+          });
           });
       $("#searching").click(function(){
           table.ajax.url("ajax/vendor.php?limits=20&keywords="+$("#keywords").val()).load();
