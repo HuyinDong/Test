@@ -120,7 +120,7 @@ function newPopup(url) {
 				</li>
 				<li>
 	         <i class="fa fa-unlock"></i>
-           <a href="#">Metaexploit</a></li>
+           <a href="#">CNVD</a></li>
 			</ul>
          </div>
          </section>
@@ -131,7 +131,7 @@ function newPopup(url) {
             <div class="input-group input-group-sm">
               <input type="text" class="form-control" id="keywords" name="keywords" placeholder="Exploits" />
               <span class="input-group-btn">
-                <button class="btn btn-info btn-flat" type="button" id = "searching"><i class="fa fa-search" ></i>Search Exploits </button>
+                <button class="btn btn-info btn-flat" type="button" id = "searching"><i class="fa fa-search" ></i>Search CNVD </button>
               </span>
             </div><!-- /input-group -->
           </div>
@@ -144,9 +144,11 @@ function newPopup(url) {
                             <table id="example" class="table table-bordered display">
                               <thead>
                                 <tr>
-                                  <th>Info</th>
-                                  <th>Detail</th>
-                                  <th>Code</th>
+                                  <th>Title</th>
+                                  <th>Published</th>
+                                  <th>CVE</th>
+                                  <th>Product</th>
+                                  <th>Description</th>
                                 </tr>
                               </thead>
 
@@ -187,14 +189,14 @@ function newPopup(url) {
     <script>
     $(document).ready(function() {
       $.ajax({
-          url : "ajax/metaexploit.php?limits=20",
+          url : "ajax/cnvd.php?limits=20",
           success : function(data){
-              $("#exploitTotal").html("Metaexploits Data Table | Total : "+JSON.parse(data).total+" Metaexploits");
+              $("#exploitTotal").html("CNVD Data Table | Total : "+JSON.parse(data).total+" CNVD");
           }
       })
       //Search
       $(".sidebar").load('sidebar.html',function(){
-          $("#sidebar_exploits").addClass("active");
+          $("#sidebar_vuls").addClass("active");
       });
 /*
 "fnCreatedCell":function (nTd, sData, oData, iRow, iCol) {
@@ -205,24 +207,14 @@ $(nTd).html("<a href="+url+">"+oData.cvename+"</a>");
       var limits = 20;
 var table = $('#example').DataTable( {
 
-      ajax:  "ajax/metaexploit.php?keywords="+$("#keywords").val()+"&limits="+limits,
+      ajax:  "ajax/cnvd.php?keywords="+$("#keywords").val()+"&limits="+limits,
       bPaginate: false,
       columns: [
-          { "data": "rtitle",
-          "fnCreatedCell":function (nTd, sData, oData, iRow, iCol) {
-            console.log(oData);
-              $(nTd).html("<td><b>Title: </b>"+oData.rtitle+"<br>"
-                         +"<b>Module Name: </b>"+oData.rmodule+"<br>"
-                         +"<b>References: </b>"+oData.rreferences+"<br>"
-                         +"<b>Targets: </b>"+oData.rtargets+"<br>"
-                         +"<b>Platforms: </b>"+oData.rplatforms+"<br>"
-                         +"<b>Architectures: </b>"+oData.rarchitectures+"<br>"
-                         +"</td>"
-                          );
-            }
-          },
-          { "data": "rdetails" },
-          { "data": "rmodulecode" },
+          { "data": "ctitle"},
+          { "data": "cpublished" },
+          { "data": "cve" },
+          { "data": "cvulnarable" },
+          { "data": "cdetails" },
       ],
       "columnDefs": [
         { "width": "40%", "targets": 0 },
@@ -232,7 +224,7 @@ var table = $('#example').DataTable( {
       var times = 1;
       $("#load").click(function(){
           limits += 20;
-          table.ajax.url("ajax/metaexploit.php?keywords="+$("#keywords").val()+"&limits="+limits).load(function(){
+          table.ajax.url("ajax/cnvd.php?keywords="+$("#keywords").val()+"&limits="+limits).load(function(){
             $('tbody  tr').eq(20*times).after(
                           '<tr class="group"><td colspan="5">New Items Below</td></tr>'
                       );
@@ -240,7 +232,7 @@ var table = $('#example').DataTable( {
           });
           });
       $("#searching").click(function(){
-          table.ajax.url("ajax/metaexploit.php?keywords="+$("#keywords").val()+"&limits=20").load();
+          table.ajax.url("ajax/cnvd.php?keywords="+$("#keywords").val()+"&limits=20").load();
         });
       });
     </script>

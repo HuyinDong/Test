@@ -20,6 +20,16 @@ $cves = array();
 $smartexploits = array();
 $rapidexploits = array();
 $intelligentexploits = array();
+
+$smartexploitsInfo = array();
+$rapidexploitsInfo = array();
+$intelligentexploitsInfo = array();
+
+$smartexploitsCodes = array();
+$rapidexploitsCodes = array();
+$intelligentexploitsCodes = array();
+
+$temp = "";
 $exploits = array();
 $data = array();
 
@@ -28,16 +38,52 @@ if ($cve_results) {
 }
 
 if ($smartexploits_results) {
-    while ($row = mysql_fetch_object($smartexploits_results)) $smartexploits[] = $row;
+    while ($row = mysql_fetch_object($smartexploits_results)){
+      $smartexploitsInfo[] = $row;
+      //echo $row->filelink;
+      $fname = '/var/www/html/se/files/PSS/99754_sa43880.txt';
+      $f = fopen("$fname", "r");
+      while(!feof($f)) {
+      $temp.= (fgets($f));
+    }
+    $smartexploitsCodes[] = $temp;
+    $temp = "";
+      fclose($f);
+    }
 }
 
 if ($rapidexploits_results) {
-    while ($row = mysql_fetch_object($rapidexploits_results)) $rapidexploits[] = $row;
+    while ($row = mysql_fetch_object($rapidexploits_results)) {
+      $rapidexploitsInfo[] = $row;
+      //echo $row->filelink;
+      $fname = '/var/www/html/se/files/PSS/99754_sa43880.txt';
+      $f = fopen("$fname", "r");
+      while(!feof($f)) {
+      $rapidexploitsCodes[] =  htmlentities (fgets($f));
+    }
+      fclose($f);
+    }
 }
 
 if ($intelligentexploits_results) {
-    while ($row = mysql_fetch_object($intelligentexploits_results)) $intelligentexploits[] = $row;
+    while ($row = mysql_fetch_object($intelligentexploits_results)){
+      $intelligentexploitsInfo[] = $row;
+      //echo $row->filelink;
+      $fname = '/var/www/html/se/files/PSS/99754_sa43880.txt';
+      $f = fopen("$fname", "r");
+      while(!feof($f)) {
+      $intelligentexploitsCodes[] =  htmlentities (fgets($f));
+    }
+      fclose($f);
+    }
 }
+
+$smartexploits["info"] = $smartexploitsInfo;
+$smartexploits["codes"] = $smartexploitsCodes;
+$rapidexploits["info"] = $rapidexploitsInfo;
+$rapidexploits["codes"] = $rapidexploitsCodes;
+$intelligentexploits["info"] = $intelligentexploitsInfo;
+$intelligentexploits["codes"] = $intelligentexploitsCodes;
 
 $exploits["smartexploits"] = $smartexploits;
 $exploits["rapidexploits"] = $rapidexploits;

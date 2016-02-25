@@ -82,22 +82,22 @@
 					 <div class="col-md-12">
 						 <!-- Custom Tabs -->
 						 <div class="nav-tabs-custom">
-							 <ul class="nav nav-tabs" ng-repeat = "ep in exploits">
-								 <li class="active"><a href="#tab_1" data-toggle="tab">ep.</a></li>
-								 <li><a href="#tab_2" data-toggle="tab">Tab 2</a></li>
-								 <li><a href="#tab_3" data-toggle="tab">Tab 3</a></li>
+							 <ul class="nav nav-tabs" >
+								 <li class = "active"><a href="#tab_1" data-toggle="tab">EDB</a></li>
+								 <li><a href="#tab_2" data-toggle="tab">PSS</a></li>
+								 <li><a href="#tab_3" data-toggle="tab">INT</a></li>
 							 </ul>
 							 <div class="tab-content">
-								 <div class="tab-pane active" id="tab_1">
-									  <pre class="brush: c;gutter:true;auto-links: false, smart-tabs: true;;">
-										 {{codes}}
-
-									 </pre>
-								 </div><!-- /.tab-pane -->
-							 <div class="tab-pane " id="tab_2">asdf
-							 </div>
-							  <div class="tab-pane " id="tab_3">zxcv
-								</div>
+								   <div class="tab-pane active" id="tab_{{$index+1}}" ng-repeat= "ep in exploits">
+										 <div ng-repeat = "code in ep.codes track by $index">
+											 <h4>Exploit {{$index+1}}</h4>
+											 <pre id="codes" class=" highlight">{{code}}</pre>
+										 </div>
+										 <br>
+									</div>
+									<!--<div class="tab-pane active" id="tab_1" ><div>asdf</div></div>
+									<div class="tab-pane active" id="tab_2" ><div>asdf</div></div>
+									<div class="tab-pane active" id="tab_3" ><div>asdf</div></div>-->
 							 </div><!-- /.tab-content -->
 						 </div><!-- nav-tabs-custom -->
 					 </div><!-- /.col -->
@@ -106,13 +106,13 @@
 				 <!-- END CUSTOM TABS -->
 </div>
 
-
+<script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
     <!-- Bootstrap core JavaScript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-      <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
-    <!-- Bootstrap 3.3.5 -->
-      <script src="bootstrap/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+		<script type="text/javascript" src="http://balupton.github.com/jquery-syntaxhighlighter/scripts/jquery.syntaxhighlighter.min.js"></script>
 			<script src = "js/angular/angular.min.js"></script>
 			<script src = "js/lodash/lodash.min.js"></script>
 			<script>
@@ -122,22 +122,13 @@
 					    var cve = location.search.split('cve=')[1];
 							$http.get('ajax/tableAndChart/getTableDetail.php?cve='+cve)
 										.then(function(data){
-
 											var items = data.data;
 											console.log(items);
 											$scope.cves = items.cves[0];
 											$scope.exploits = items.exploits;
-											$scope.codes =  "function(){\n"+
-																			"int i = 0;\n"+
-																			"for(;i<10;i++)\n"+
-																			"cout << This is a good example;\n"+
-																			"}}";
-																			SyntaxHighlighter.all();
+											console.log("ep",items.exploits);
+											$.SyntaxHighlighter.init();
 											});
-
-												$timeout(function(){
-
-												},2500);
 
 			});
 
