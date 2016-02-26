@@ -41,7 +41,8 @@ if ($smartexploits_results) {
     while ($row = mysql_fetch_object($smartexploits_results)){
       $smartexploitsInfo[] = $row;
       //echo $row->filelink;
-      $fname = '/var/www/html/se/files/PSS/99754_sa43880.txt';
+        //$fname = '../..'.$row->filelink;
+        $fname = '../../files/PSS/99754_sa43880.txt';
       $f = fopen("$fname", "r");
       while(!feof($f)) {
       $temp.= (fgets($f));
@@ -56,7 +57,8 @@ if ($rapidexploits_results) {
     while ($row = mysql_fetch_object($rapidexploits_results)) {
       $rapidexploitsInfo[] = $row;
       //echo $row->filelink;
-      $fname = '/var/www/html/se/files/PSS/99754_sa43880.txt';
+      //$fname = '../..'.$row->filelink;
+      $fname = '../../files/PSS/99754_sa43880.txt';
       $f = fopen("$fname", "r");
       while(!feof($f)) {
       $rapidexploitsCodes[] =  htmlentities (fgets($f));
@@ -69,7 +71,8 @@ if ($intelligentexploits_results) {
     while ($row = mysql_fetch_object($intelligentexploits_results)){
       $intelligentexploitsInfo[] = $row;
       //echo $row->filelink;
-      $fname = '/var/www/html/se/files/PSS/99754_sa43880.txt';
+      //$fname = '../..'.$row->filelink;
+      $fname = '../../files/PSS/99754_sa43880.txt';
       $f = fopen("$fname", "r");
       while(!feof($f)) {
       $intelligentexploitsCodes[] =  htmlentities (fgets($f));
