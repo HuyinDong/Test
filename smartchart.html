@@ -53,7 +53,13 @@ stroke-width: 1.5px;
 }
 
 </style>
-    </style>
+<script>
+// Popup window code
+function newPopup(url) {
+  popupWindow = window.open(
+    url,'popUpWindow','height=800,width=1000,left=10,top=10,resizable=yes,scrollbars=yes,toolbar=yes,menubar=no,location=no,directories=no,status=yes')
+}
+</script>
   </head>
   <!--
   BODY TAG OPTIONS:
@@ -616,7 +622,8 @@ stroke-width: 1.5px;
 									 });
 
 					 }else if(d.depth == 3){
-							console.log("depth3");
+              var url = "smarttable_cve_detail.html?cve="+d.name;
+              newPopup(url);
 					 }else{
 
 					 }
