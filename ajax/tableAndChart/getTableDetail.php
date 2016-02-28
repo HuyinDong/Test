@@ -73,7 +73,7 @@ if ($intelligentexploits_results) {
       //echo $row->filelink;
       //$fname = '../..'.$row->filelink;
       $fname = '../../files/PSS/99754_sa43880.txt';
-      $f = fopen("$fname", "r");
+      $f = fopen("$fname", "r") or die("Unable to open file!");;
       while(!feof($f)) {
       $intelligentexploitsCodes[] =  htmlentities (fgets($f));
     }
@@ -88,7 +88,10 @@ $rapidexploits["codes"] = $rapidexploitsCodes;
 $intelligentexploits["info"] = $intelligentexploitsInfo;
 $intelligentexploits["codes"] = $intelligentexploitsCodes;
 
-$exploits["smartexploits"] = $smartexploits;
+if(sizeof($smartexploits.codes) != 0){
+    $exploits["smartexploits"] = $smartexploits;
+}
+
 $exploits["rapidexploits"] = $rapidexploits;
 $exploits["intelligentexploits"] = $intelligentexploits;
 $data['cves'] = $cves;
