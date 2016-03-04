@@ -1,7 +1,7 @@
 <?php
 $DBhost = "localhost";
-$DBuser = "chemmolc_jesse";
-$DBpass = "H0wAr1Y0u";
+$DBuser = "root";
+$DBpass = "1986070@Dong";
 $DBName = "smartexploits";
 
 mysql_connect($DBhost,$DBuser,$DBpass) or die("Unable to connect to database" . mysql_error());
